@@ -1,0 +1,32 @@
+{% extends 'template.html.twig' %}
+
+{% block title %}Famille{% endblock %}
+
+{% block body %}
+    <h1>Famille</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ famille.id }}</td>
+            </tr>
+            <tr>
+                <th>Libelle</th>
+                <td>{{ famille.libellefamille }}</td>
+            </tr>
+        </tbody>
+    </table>
+    <table>
+        <tr>
+            <a href="{{ path('famille_edit', {'id': famille.id}) }}" class="btn btn-warning">Update</a>
+            {{ include('famille/_delete_form.html.twig') }}
+        </tr>
+        <tr>
+            <a href="{{ path('famille_index') }}">back to list</a>
+        </tr>
+    </table>
+    
+
+    
+{% endblock %}

@@ -1,0 +1,44 @@
+{% extends 'template.html.twig' %}
+
+{% block title %}Produit{% endblock %}
+
+{% block body %}
+
+ <h1>Produit</h1>
+<table class="table table-bordered table-sm">
+            <thead class="thead-dark">
+                <tr>
+                    <th>Id</th>
+                    <th>Libelle</th>
+                    <th>Pa</th>
+                    <th>Pv</th>
+                    <th>Tva</th>
+                    <th>Stock</th>
+                    <th>StockInit</th>
+                    <th>Stockalrt</th>
+                </tr>    
+            </thead>   
+            <tbody>
+                <tr>
+                    <td>{{ produit.id }}</td>
+                    <td>{{ produit.libelle }}</td>
+                    <td>{{ produit.pa }}</td>
+                    <td>{{ produit.pv }}</td>
+                    <td>{{ produit.tva }}</td>
+                    <td>{{ produit.stock }}</td>
+                    <td>{{ produit.stockInit }}</td>
+                    <td>{{ produit.stockalrt }}</td>
+                </tr>
+            </tbody>   
+</table>
+
+<table>
+       <tr> 
+            <a href="{{ path('produit_edit', {'id': produit.id}) }}"class = "btn btn-warning">Update</a>
+            {{ include('produit/_delete_form.html.twig') }}
+       </tr> 
+       <tr>
+            <a href="{{ path('produit_index') }}">back to list</a>
+       </tr>
+</table> 
+{% endblock %}

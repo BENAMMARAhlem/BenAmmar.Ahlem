@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Connexion</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+<!--===============================================================================================-->	
+	<link rel="icon" type="image/png" href="{{asset('templateRegister/images/icons/favicon.ico')}}"/>
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{{asset('templateRegister/vendor/bootstrap/css/bootstrap.min.css')}}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{{asset('templateRegister/fonts/font-awesome-4.7.0/css/font-awesome.min.css')}}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{{asset('templateRegister/fonts/Linearicons-Free-v1.0.0/icon-font.min.css')}}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{{asset('templateRegister/vendor/animate/animate.css')}}">
+<!--===============================================================================================-->	
+	<link rel="stylesheet" type="text/css" href="{{asset('templateRegister/vendor/css-hamburgers/hamburgers.min.css')}}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{{asset('templateRegister/vendor/select2/select2.min.css')}}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{{asset('templateRegister/css/util.css')}}">
+	<link rel="stylesheet" type="text/css" href="{{asset('templateRegister/css/main.css')}}">
+<!--===============================================================================================-->
+<style>
+.h1{
+    color:black;
+    }
+    </style>
+</head>
+<body>
+		<div class="limiter"> 
+		<div class="container-login100" style="background-image: url('{{asset('templateRegister/images/img-01.jpg')}}');">
+			<div class="wrap-login100 p-t-100 p-b-30">
+				<form class="login100-form validate-form" method="post">
+                <div class="login100-form-avatar">
+						<img src="{{asset('templateRegister/images/avatar-01.jpg')}}" alt="AVATAR">
+					</div>
+                    	<span class="login100-form-title p-t-20 p-b-45">
+					</span>
+
+				  {% if error %}
+        <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+    {% endif %}
+
+    {% if app.user %}
+        <div class="mb-3">
+            You are logged in as {{ app.user.username }}, <a href="{{ path('app_logout') }}">Logout</a>
+        </div>
+    {% endif %}
+
+
+  	<div class="wrap-input100 validate-input m-b-10" data-validate = "Username is required">
+			<input class="input100" type="text" value="{{ last_username }}" name="username" id="inputUsername" placeholder="Username" required autofocus>
+				<span class="focus-input100"></span>
+				<span class="symbol-input100">
+					<i class="fa fa-user"></i>
+				</span>
+	</div>
+
+	<div class="wrap-input100 validate-input m-b-10" data-validate = "Password is required">
+			<input class="input100" type="password" name="password" id="inputPassword" placeholder="Password" required>
+				<span class="focus-input100"></span>
+				<span class="symbol-input100">
+					<i class="fa fa-lock"></i>
+				</span>
+	</div>
+    <input type="hidden" name="_csrf_token"
+           value="{{ csrf_token('authenticate') }}">
+
+    {#
+        Uncomment this section and add a remember_me option below your firewall to activate remember me functionality.
+        See https://symfony.com/doc/current/security/remember_me.html
+
+        <div class="checkbox mb-3">
+            <label>
+                <input type="checkbox" name="_remember_me"> Remember me
+            </label>
+        </div>
+    #}
+
+   					<div class="container-login100-form-btn p-t-10">
+						<button class="login100-form-btn" type="submit">
+							Submit
+						</button>
+					</div>
+					
+					<div class="text-center w-full">
+						<a class="txt1" href="{{path('security_registration')}}">
+							Create new account
+							<i class="fa fa-long-arrow-right"></i>						
+						</a>
+					</div>
+					
+</form>
+<!--===============================================================================================-->	
+	<script src="{{asset('templateRegister/vendor/jquery/jquery-3.2.1.min.js')}}"></script>
+<!--===============================================================================================-->
+	<script src="{{asset('templateRegister/vendor/bootstrap/js/popper.js')}}"></script>
+	<script src="{{asset('templateRegister/vendor/bootstrap/js/bootstrap.min.js')}}"></script>
+<!--===============================================================================================-->
+	<script src="{{asset('templateRegister/vendor/select2/select2.min.js')}}"></script>
+<!--===============================================================================================-->
+	<script src="{{asset('templateRegister/js/main.js')}}"></script>
+</body>
+</html>
+

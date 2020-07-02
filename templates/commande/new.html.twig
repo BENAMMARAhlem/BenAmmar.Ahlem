@@ -1,0 +1,59 @@
+{% extends 'template.html.twig' %}
+
+{% block title %}New Commande{% endblock %}
+
+{% block body %}
+<form action="" method="post" >
+        
+        <h1>Gestion Commande</h1>
+           
+    <table class ="table-condensed">
+        <tr>
+            <td>Numéro commande : </td>
+            <td>{{ form_widget(form.numcom)}}
+            <td>Date Commande : </td>
+            <td>{{ form_widget(form.dateComm) }}</td>
+            <td>Total Tax : </td>
+            <td>{{ form_widget(form.TotalTax)}}
+        </tr>
+         <tr>
+            <td>Total Tva : </td>
+            <td>{{ form_widget(form.TotalTva)}}
+            <td>Total Ttc : </td>
+            <td>{{ form_widget(form.TotalTtc)}}
+             <td>Client  : </td>
+            <td>{{ form_widget(form.id_Client) }}</td>
+        </tr>
+        </table>
+        <table class ="table">
+           
+            <th class="col-md-1">Produit</th>
+            <th class="col-md-1">Prix Unitaire</th>
+            <th class="col-md-1">Qté</th>
+          
+            <th class="col-md-1">Mont Ht</th>
+            <th class="col-md-1">Action</th>
+ 
+        <tr>
+            <td class="col-md-1">
+                {{ form_widget(f.id_produit) }}
+            </td>
+            <td class="col-md-1">
+              {{ form_widget(f.qte) }}
+            </td>
+            <td class="col-md-1">
+               {{ form_widget(f.tva) }}
+            </td>
+            
+            <td>
+                <input type="submit" value = "Save" name ="bt"
+                class = "btn btn-success" <i class = "glyphicon glyphicon-save"></i>
+             </td>
+
+        </tr>
+            
+    </table>
+    
+</form>    
+<a href="{{ path('commande_index') }}">back to list</a>
+    {% endblock %}

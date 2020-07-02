@@ -1,0 +1,23 @@
+{% extends 'template.html.twig' %}
+
+{% block title %}New Famille{% endblock %}
+
+{% block body %}
+<div class="container">
+
+    <h1>New Famille</h1>
+             
+        <div class ="panel-body">  
+       
+            {{ form_start(form) }}
+                {{ form_widget(form) }} 
+                <button class = "btn btn-success">{{ button_label|default('Save') }}</button>
+               
+            {{ form_end(form) }}
+        </div>    
+            <a href="{{ path('famille_index') }}">back to list</a>
+            
+    </div>
+
+</div> 
+{% endblock %}

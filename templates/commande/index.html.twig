@@ -1,0 +1,43 @@
+{% extends 'template.html.twig' %}
+
+{% block title %}Commande index{% endblock %}
+
+{% block body %}
+    <h1>Gestion Commande</h1>
+
+    <table class="table table-bordered table-sm">
+        <thead class="thead-dark">
+            <tr>
+                <th>Id</th>
+                <th>Numéro Commande</th>
+                <th>Date Commande</th>
+                <th>Total Tax</th>
+                <th>Total Tva</th>
+                <th>Total Ttc</th>
+                <th>actions</th>
+            </tr>
+       </thead>
+        <tbody>
+        {% for commande in commandes %}
+            <tr>
+                <td>{{ commande.id}}</td>
+                <td>{{ commande.numcom }}</td>
+                <td>{{ commande.dateComm ? commande.dateComm|date('Y-m-d') : '' }}</td>
+                <td>{{ commande.TotalTax }}</td>
+                <td>{{ commande.TotalTva }}</td>
+                <td>{{ commande.TotalTtc }}</td>
+                <td>
+                    <a href="{{ path('commande_show', {'id': commande.id}) }}" class = "btn btn-success">Show</a>
+                    <a href="{{ path('commande_edit', {'id': commande.id}) }}" class = "btn btn-warning">Update</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="7">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('commande_new') }}" class = "btn btn-success">Create new</a>
+{% endblock %}

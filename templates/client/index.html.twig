@@ -1,0 +1,55 @@
+{% extends 'template.html.twig' %}
+
+{% block title %}Client index{% endblock %}
+
+{% block body %}
+<div>
+<h1>Liste Client</h1>
+    <table class="table table-bordered table-sm">
+        <thead class="thead-dark">
+            <tr>
+                <th>Designation</th>
+                <th>Responsable Commercial</th>
+                <th>Responsable Financier</th>
+                <th>Adresse Livraison</th>
+                <th>Adresse Facture</th>
+                <th>Téléphone</th>
+                <th>Portable</th>
+                <th>Fax</th>
+                <th>Email</th>
+                <th>Solde Initial</th>
+                <th>Solde</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for client in clients %}
+            <tr>
+                <td>{{ client.designation }}</td>
+                <td>{{ client.RespComm }}</td>
+                <td>{{ client.RespFinan }}</td>
+                <td>{{ client.adrLiv }}</td>
+                <td>{{ client.adrFacture }}</td>
+                <td>{{ client.tel }}</td>
+                <td>{{ client.portable }}</td>
+                <td>{{ client.fax }}</td>
+                <td>{{ client.email }}</td>
+                <td>{{ client.soldeInit }}</td>
+                <td>{{ client.solde }}</td>
+                <td>
+                    <a href="{{ path('client_show', {'id': client.id}) }}" class = "btn btn-success">Show</a>
+                    <a href="{{ path('client_edit', {'id': client.id}) }}" class = "btn btn-warning">Update</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="13">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('client_new') }}"class = "btn btn-success">Create new</a>
+
+  </div>
+{% endblock %}
